@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}
+Enter Data
+{% endblock %}
+
+{% block content %}
+
+<h1>Enter Data</h1>
+
+<form onsubmit="event.preventDefault(); submit_or_update();">
+    <input type="hidden" id="student_id">
+
+    <label>Name</label>
+    <input type="text" id="name" name="name"><br>
+
+    <label>Age</label>
+    <input type="number" id="age" name="age"><br>
+
+    <label>Email</label>
+    <input type="email" id="email" name="email"><br>
+
+    <label>Phone</label>
+    <input type="text" id="phone" name="phone"><br>
+
+    <label>Address</label>
+    <input type="text" id="address" name="address"><br>
+
+    <input type="submit" value="Submit">
+    <input type="button" value="Reset" onclick="clear_val()">
+</form>
+
+<br>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.phone }}</td>
+            <td>{{ student.address }}</td>
+            <td>
+                <button onclick="edit_data({{ student.id }})">Edit</button>
+                <button onclick="delete_data({{ student.id }})">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+
+<input type="hidden" id="pg" value="{{ page_number }}">
+<div style="margin-top:20px;">
+    {% if students.has_previous %}
+    <a href="?page={{ students.previous_page_number }}">Previous</a>
+    {% endif %}
+    Page {{ students.number }} of {{ students.paginator.num_pages }}
+    {% if students.has_next %}
+    <a href="?page={{ students.next_page_number }}">Next</a>
+    {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function clear_val() {
+        document.getElementById('student_id').value = "";
+        document.getElementById('name').value = "";
+        document.getElementById('age').value = "";
+        document.getElementById('email').value = "";
+        document.getElementById('phone').value = "";
+        document.getElementById('address').value = "";
+    }
+
+    function submit_or_update() {
+        var student_id = document.getElementById('student_id').value;
+
+        if (student_id === "") {
+            submit_data();
+        } else {
+            update_data();
+        }
+    }
+
+    function submit_data() {
+        var data = {
+            name: document.getElementById('name').value,
+            age: document.getElementById('age').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            address: document.getElementById('address').value
+        };
+
+        fetch('/ajax/submit/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire('Success!', data.message, 'success');
+                location.reload();
+            })
+            .catch(error => {
+                Swal.fire('Error!', 'Something went wrong', 'error');
+            });
+    }
+
+    function edit_data(id) {
+        fetch('/ajax/edit/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ id: id })
+        })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('student_id').value = id;
+                document.getElementById('name').value = data.name;
+                document.getElementById('age').value = data.age;
+                document.getElementById('email').value = data.email;
+                document.getElementById('phone').value = data.phone;
+                document.getElementById('address').value = data.address;
+            });
+    }
+
+    function update_data() {
+        var data = {
+            id: document.getElementById('student_id').value,
+            name: document.getElementById('name').value,
+            age: document.getElementById('age').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            address: document.getElementById('address').value
+        };
+
+        fetch('/ajax/update/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire('Updated!', data.message, 'success');
+                clear_val();
+                location.reload();
+            })
+            .catch(error => {
+                Swal.fire('Error!', 'Something went wrong', 'error');
+            });
+    }
+
+    function delete_data(id) {
+        fetch('/ajax/delete/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ id: id })
+        })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire('Deleted!', data.message, 'success');
+                location.reload();
+            });
+    }
+</script>
+
+{% endblock %}

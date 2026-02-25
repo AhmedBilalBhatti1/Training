@@ -1,0 +1,21 @@
+id,name,age,city,salary,department
+1,Ahmed Ali,28,Cairo,55000,IT
+2,Sara Khan,34,Dubai,72000,HR
+3,John Smith,25,London,48000,Marketing
+4,Emily Davis,41,New York,95000,Finance
+5,Michael Brown,30,Toronto,62000,IT
+6,Olivia Wilson,29,Sydney,58000,Sales
+7,Daniel Martinez,37,Madrid,81000,Operations
+8,Sophia Taylor,26,Berlin,47000,Marketing
+9,David Anderson,45,Chicago,105000,Management
+10,Ava Thomas,32,Paris,69000,HR
+11,James White,27,Los Angeles,53000,IT
+12,Isabella Harris,38,Rome,87000,Finance
+13,Benjamin Clark,31,Amsterdam,61000,Sales
+14,Mia Lewis,24,Dublin,45000,Support
+15,Lucas Walker,36,Singapore,83000,Operations
+16,Charlotte Hall,33,Doha,71000,Marketing
+17,Henry Allen,40,Houston,92000,Management
+18,Amelia Young,28,Melbourne,56000,IT
+19,Alexander King,35,Manchester,78000,Finance
+20,Evelyn Wright,29,Stockholm,60000,Sales
