@@ -1,0 +1,25 @@
+[2026-02-27T13:36:27.268+0000][52617][info][gc,init] CardTable entry size: 512
+[2026-02-27T13:36:27.268+0000][52617][info][gc     ] Using G1
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Version: 21.0.1+12-29 (release)
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] CPUs: 8 total, 8 available
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Memory: 15736M
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Large Page Support: Disabled
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] NUMA Support: Disabled
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Compressed Oops: Enabled (Zero based)
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Heap Region Size: 2M
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Heap Min Capacity: 8M
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Heap Initial Capacity: 246M
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Heap Max Capacity: 3936M
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Pre-touch: Disabled
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Parallel Workers: 8
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Concurrent Workers: 2
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Concurrent Refinement Workers: 8
+[2026-02-27T13:36:27.269+0000][52617][info][gc,init] Periodic GC: Disabled
+[2026-02-27T13:36:27.276+0000][52617][info][gc,metaspace] CDS archive(s) mapped at: [0x00007270b3000000-0x00007270b3ca5000-0x00007270b3ca5000), size 13258752, SharedBaseAddress: 0x00007270b3000000, ArchiveRelocationMode: 1.
+[2026-02-27T13:36:27.276+0000][52617][info][gc,metaspace] Compressed class space mapped at: 0x00007270b4000000-0x00007270f4000000, reserved size: 1073741824
+[2026-02-27T13:36:27.276+0000][52617][info][gc,metaspace] Narrow klass base: 0x00007270b3000000, Narrow klass shift: 0, Narrow klass range: 0x100000000
+[2026-02-27T13:36:27.328+0000][52617][info][gc,heap,exit] Heap
+[2026-02-27T13:36:27.328+0000][52617][info][gc,heap,exit]  garbage-first heap   total 253952K, used 4004K [0x000000070a000000, 0x0000000800000000)
+[2026-02-27T13:36:27.328+0000][52617][info][gc,heap,exit]   region size 2048K, 2 young (4096K), 0 survivors (0K)
+[2026-02-27T13:36:27.328+0000][52617][info][gc,heap,exit]  Metaspace       used 226K, committed 448K, reserved 1114112K
+[2026-02-27T13:36:27.328+0000][52617][info][gc,heap,exit]   class space    used 6K, committed 128K, reserved 1048576K
