@@ -28,8 +28,6 @@ class MyModelTestCase(TestCase):
         self.assertEqual(self.model.message, fake.text())
         self.assertEqual(self.model.created_at, fake.date_time_between(start_date='-5y', end_date='now'))
 
-    
-
 if __name__ == '__main__':
     for i in range(1000):
         MyModel.objects.create(name=fake.name(),email=fake.email(),message=fake.text(),created_at = fake.date_time_between(start_date='-5y', end_date='now'))
